@@ -1,0 +1,48 @@
+# Python
+venv/
+backend_venv/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# Ortam değişkenleri (secrets)
+.env
+.env.local
+*.env
+
+# Logs
+*.log
+
+# Node / frontend
+node_modules/
+dist/
+build/
+.expo/
+*.tsbuildinfo
+
+# Veritabanı (alembic + seed ile yeniden uretilir)
+*.db
+*.sqlite
+*.sqlite3
+
+# Buyuk demo/dataset dosyalari (lokalde tutulur, repoya girmez)
+samples/
+data/yolo/
+data/frames/
+data/videos/
+
+# Egitim ciktilari: sadece final modeller (.pt) repoya girer
+runs/*
+!runs/train/
+runs/train/*
+!runs/train/*/
+runs/train/*/*
+!runs/train/*/weights/
+runs/train/*/weights/*
+!runs/train/*/weights/best.pt
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
