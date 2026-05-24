@@ -15,9 +15,8 @@ from app.core.security import get_password_hash
 
 logger = get_logger("db.seed")
 
-# CarParking proje kökü (backend'in bir üst dizini)
+# Proje kökü (mask / video gibi statik varlıklara ulaşmak için)
 ROOT = Path(__file__).resolve().parents[3]
-sys.path.insert(0, str(ROOT))
 
 
 def seed_database():
@@ -72,7 +71,7 @@ def seed_database():
         spots_bboxes = []
         try:
             import cv2
-            from util import get_parking_spots_bboxes
+            from app.cv import get_parking_spots_bboxes
             mask = cv2.imread(mask_path, 0)
             if mask is not None:
                 cc = cv2.connectedComponentsWithStats(mask, 4, cv2.CV_32S)

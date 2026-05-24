@@ -1,9 +1,8 @@
 """
 MJPEG video stream endpoint.
 Mask → park alanı bbox + YOLOv11n → araç tespiti + IoU threshold → dolu/boş.
-main.py ile aynı pipeline, HTTP üzerinden canlı yayın.
+HTTP üzerinden canlı yayın.
 """
-import sys
 import time
 import asyncio
 import threading
@@ -17,6 +16,7 @@ from fastapi.responses import StreamingResponse, Response
 from app.core.database import SessionLocal
 from app.core.config import get_settings
 from app.core.logging_config import get_logger
+from app.cv import YOLOVehicleDetector
 from app.models import Spot, ParkingLot, ParkingSession
 from app.models.parking_session import SessionStatus
 
@@ -25,9 +25,6 @@ logger = get_logger("api.video_stream")
 settings = get_settings()
 
 ROOT = Path(settings.PROJECT_ROOT)
-sys.path.insert(0, str(ROOT))
-
-from yolo_detector import YOLOVehicleDetector
 
 VIDEO_PATH = settings.CV_VIDEO_PATH
 MODEL_PATH = settings.CV_MODEL_PATH

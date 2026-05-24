@@ -41,8 +41,9 @@ runs/train/*/*
 runs/train/*/weights/*
 !runs/train/*/weights/best.pt
 
-# IDE / OS
+# IDE / OS / Tooling
 .vscode/
 .idea/
+.claude/
 .DS_Store
 Thumbs.db
